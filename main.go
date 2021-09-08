@@ -45,39 +45,6 @@ func generateMap(input []int) map[int]int {
 	return gen
 }
 
-// // O(n*log(n))
-// func expenseReportSolution(input []int) (int, int) {
-// 	sort.Ints(input)
-
-// 	for i := range input {
-// 		required := 2020 - input[i]
-// 		if search(input, required) {
-// 			return input[i], required
-// 		}
-// 	}
-// 	return 0, 0
-// }
-
-// func search(input []int, x int) bool {
-// 	return binarySearch(input, 0, len(input)-1, x)
-// }
-
-// func binarySearch(input []int, low int, high int, x int) bool {
-// 	if low > high {
-// 		return false
-// 	}
-
-// 	mid := (low + high) / 2
-
-// 	if x == input[mid] {
-// 		return true
-// 	} else if x < input[mid] {
-// 		return binarySearch(input, low, mid-1, x)
-// 	} else {
-// 		return binarySearch(input, mid+1, high, x)
-// 	}
-// }
-
 func readInputFromFile() ([]int, error) {
 	path := "input"
 	file, err := os.Open(path)
