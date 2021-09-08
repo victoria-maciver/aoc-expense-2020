@@ -11,22 +11,25 @@ func TestExpenseReportSolution(t *testing.T) {
 		675,
 		1456,
 	}
-	correct1, correct2 := 1721, 299
+	correct1, correct2, correct3 := 979, 366, 675
 
-	a, b, err := expenseReportSolution(input)
+	a, b, c, err := expenseReportSolution(input)
 
 	if err != nil {
 		t.Errorf("Error encountered in expenseReportSolution")
 	}
 
-	if (a + b) != 2020 {
+	if (a + b + c) != 2020 {
 		t.Errorf("Does not sum to 2020")
 	}
 
-	if a != correct1 && a != correct2 {
-		t.Errorf("Incorrect choice of %d, should be %d or %d", a, correct1, correct2)
+	if a != correct1 && a != correct2 && a != correct3 {
+		t.Errorf("Incorrect choice of %d, should be either: %d, %d or %d", a, correct1, correct2, correct3)
 	}
-	if b != correct1 && b != correct2 {
-		t.Errorf("Incorrect choice of %d, should be %d or %d", b, correct1, correct2)
+	if b != correct1 && b != correct2 && b != correct3 {
+		t.Errorf("Incorrect choice of %d, should be either %d, %d or %d", b, correct1, correct2, correct3)
+	}
+	if c != correct1 && c != correct2 && c != correct3 {
+		t.Errorf("Incorrect choice of %d, should be either %d, %d or %d", c, correct1, correct2, correct3)
 	}
 }

@@ -13,26 +13,28 @@ func main() {
 		fmt.Println("Input file could not be read")
 		os.Exit(1)
 	}
-	a, b, err := expenseReportSolution(input)
+	a, b, c, err := expenseReportSolution(input)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
-	fmt.Printf("%v + %v = %v\n", a, b, a+b)
-	fmt.Printf("Answer: %v\n", a*b)
+	fmt.Printf("%v + %v + %v = %v\n", a, b, c, a+b+c)
+	fmt.Printf("Answer: %v\n", a*b*c)
 }
 
-func expenseReportSolution(input []int) (int, int, error) {
+func expenseReportSolution(input []int) (int, int, int, error) {
 	expenses := generateMap(input)
 
 	for i := range input {
-		required := 2020 - input[i]
-		_, found := expenses[required]
-		if found {
-			return input[i], required, nil
+		for j := range input {
+			required := 2020 - input[i] - input[j]
+			_, found := expenses[required]
+			if found {
+				return input[i], input[j], required, nil
+			}
 		}
 	}
-	return 0, 0, fmt.Errorf("valid expenses could not be found")
+	return 0, 0, 0, fmt.Errorf("valid expenses could not be found")
 }
 
 func generateMap(input []int) map[int]int {
