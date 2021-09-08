@@ -32,7 +32,7 @@ func expenseReportSolution(input []int) (int, int) {
 }
 
 func readInputFromFile() ([]int, error) {
-	path := "/Users/vmaciver/codestuff/adventcodego/input"
+	path := "input"
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
