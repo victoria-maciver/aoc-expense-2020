@@ -2,21 +2,6 @@ package main
 
 import "testing"
 
-func TestBinarySearch(t *testing.T) {
-	input := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
-
-	testSearchFor(1, input, t)
-	testSearchFor(5, input, t)
-	testSearchFor(9, input, t)
-}
-
-func testSearchFor(value int, input []int, t *testing.T) {
-	found := search(input, value)
-	if !found {
-		t.Errorf("Did not find %d", value)
-	}
-}
-
 func TestExpenseReportSolution(t *testing.T) {
 	input := []int{
 		1721,
@@ -28,7 +13,11 @@ func TestExpenseReportSolution(t *testing.T) {
 	}
 	correct1, correct2 := 1721, 299
 
-	a, b := expenseReportSolution(input)
+	a, b, err := expenseReportSolution(input)
+
+	if err != nil {
+		t.Errorf("Error encountered in expenseReportSolution")
+	}
 
 	if (a + b) != 2020 {
 		t.Errorf("Does not sum to 2020")
